@@ -233,7 +233,7 @@ const QUESTIONS = [
       "다섯 장 사개맞춤",
       "열 장 사개맞춤"
     ],
-    answer: 2,
+    answer: 3,
     explanation: "사개맞춤은 필요한 강도에 따라 2장·3장·5장을 만든다. 그림은 석 장 사개맞춤이다."
   },
   {
@@ -415,7 +415,7 @@ const QUESTIONS = [
       "켜기용 등대기톱으로 켜고 끌로 따낸다.",
       "숫부재와 마찬가지로 연귀를 만들 선까지만 따낸다."
     ],
-    answer: 4,
+    answer: 3,
     explanation: "암부재 주먹장은 표시선 전체를 따내야 하며, 숫부재처럼 일부만 따내지 않는다."
   },
   {
@@ -457,7 +457,7 @@ const QUESTIONS = [
       "끼움촉맞춤",
       "통맞춤"
     ],
-    answer: 1,
+    answer: 2,
     explanation: "그림은 주먹장맞춤이다."
   },
   {
@@ -485,7 +485,7 @@ const QUESTIONS = [
       "약 28°",
       "약 38°"
     ],
-    answer: 2,
+    answer: 1,
     explanation: "주먹장의 일반적인 경사도는 약 18°이다."
   },
   {
@@ -569,7 +569,7 @@ const QUESTIONS = [
       "안촉연귀",
       "밖촉연귀"
     ],
-    answer: 1,
+    answer: 3,
     explanation: "면과 면을 직각으로 맞추기 위해 마구리가 보이지 않도록 서로 45°로 잘라 맞춘 것은 연귀이다."
   },
   {
@@ -583,7 +583,7 @@ const QUESTIONS = [
       "안촉연귀맞춤",
       "안팎촉연귀맞춤"
     ],
-    answer: 2,
+    answer: 4,
     explanation: "그림은 반연귀맞춤이다."
   },
   {
@@ -807,7 +807,7 @@ const QUESTIONS = [
       "반턱이음",
       "턱솔이음"
     ],
-    answer: 3,
+    answer: 1,
     explanation: "그림은 반턱이음이다."
   },
   {
@@ -821,7 +821,7 @@ const QUESTIONS = [
       "2.5~3.0배",
       "3.0~3.5배"
     ],
-    answer: 2,
+    answer: 3,
     explanation: "빗이음 길이는 재춤(깊이)의 1.5~2.0배로 한다."
   },
   {
@@ -877,7 +877,7 @@ const QUESTIONS = [
       "③번",
       "④번"
     ],
-    answer: 1,
+    answer: 3,
     explanation: "쪽매 방법으로는 ①번이 좋다."
   },
   {
