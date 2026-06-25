@@ -80,18 +80,34 @@ function handlePasswordSubmit() {
   }
 }
 
+// ===== 과목(편) 목록 — 우선순위 순서 =====
+const SUBJECTS = [
+  '제4편 맞춤과 이음',
+  '제7편 가구 조립 작업',
+  '제3편 목재 가공',
+  '제2편 목재 재료',
+  '제6편 도장과 접착제',
+  '제1편 가구와 목공에 설계',
+  '제5편 세공과 수공구',
+];
+
+const SUBJECT_ID = {
+  '제4편 맞춤과 이음': '제4편',
+  '제7편 가구 조립 작업': '제7편',
+  '제3편 목재 가공': '제3편',
+  '제2편 목재 재료': '제2편',
+  '제6편 도장과 접착제': '제6편',
+  '제1편 가구와 목공에 설계': '제1편',
+  '제5편 세공과 수공구': '제5편',
+};
+
 // ===== 홈 화면 =====
 function renderHome() {
   document.getElementById('total-count').textContent = QUESTIONS.length;
   document.getElementById('wrong-count').textContent = Object.keys(getWrongAnswers()).length;
   document.getElementById('wrong-count-home').textContent = Object.keys(getWrongAnswers()).length;
-
-  const subjects = ['가구제도', '가구재료', '가구공작'];
-  subjects.forEach(s => {
-    const el = document.getElementById('count-' + s);
-    if (el) el.textContent = QUESTIONS.filter(q => q.subject === s).length + '문항';
-  });
 }
+
 
 // ===== 실전모드 =====
 function startExam() {
@@ -233,7 +249,8 @@ function renderExamResult(score, wrongIds, subjectStats) {
 
   const subjectEl = document.getElementById('subject-scores');
   subjectEl.innerHTML = '';
-  Object.entries(subjectStats).forEach(([name, stat]) => {
+  SUBJECTS.filter(s => subjectStats[s]).forEach(name => {
+    const stat = subjectStats[name];
     const pct = Math.round((stat.correct / stat.total) * 100);
     subjectEl.innerHTML += `
       <div class="subject-score-card">
@@ -271,9 +288,8 @@ function addResultToWrong() {
 
 // ===== 과목별 연습모드 =====
 function renderPracticeSelect() {
-  const subjects = ['가구제도', '가구재료', '가구공작'];
-  subjects.forEach(s => {
-    const el = document.getElementById('count-' + s);
+  SUBJECTS.forEach(s => {
+    const el = document.getElementById('count-' + SUBJECT_ID[s]);
     if (el) el.textContent = QUESTIONS.filter(q => q.subject === s).length + '문항';
   });
 }
