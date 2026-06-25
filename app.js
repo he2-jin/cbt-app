@@ -25,6 +25,8 @@ let wrongPracticeState = {
   answered: {},
 };
 
+let lastWrongIds = [];
+
 // ===== 화면 전환 =====
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -97,6 +99,7 @@ function startExam() {
   examState.currentIndex = 0;
   examState.questions = [...QUESTIONS];
   examState.timeLeft = 3600;
+  document.getElementById('result-add-wrong').disabled = false;
 
   renderExamNav();
   renderExamQuestion(0);
@@ -260,10 +263,9 @@ function renderExamResult(score, wrongIds, subjectStats) {
   }
 }
 
-let lastWrongIds = [];
-
 function addResultToWrong() {
   addToWrongAnswers(lastWrongIds);
+  document.getElementById('result-add-wrong').disabled = true;
   alert('오답노트에 추가되었습니다.');
 }
 
