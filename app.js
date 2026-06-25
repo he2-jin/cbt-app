@@ -372,12 +372,141 @@ function movePracticeQuestion(dir) {
   }
 }
 
-// ===== 오답노트 (Task 6에서 구현) =====
-function renderWrongNotes() {}
-function startWrongPractice() {}
-function renderWrongPracticeQuestion(index) {}
-function moveWrongPracticeQuestion(dir) {}
-function clearWrongNotes() {}
+// ===== 오답노트 =====
+function renderWrongNotes() {
+  const wrong = getWrongAnswers();
+  const ids = Object.keys(wrong).map(Number);
+  const emptyEl = document.getElementById('wrong-notes-empty');
+  const listEl = document.getElementById('wrong-notes-list');
+  const practiceBtn = document.getElementById('wrong-notes-practice');
+  const clearBtn = document.getElementById('wrong-notes-clear');
+
+  listEl.innerHTML = '';
+  if (ids.length === 0) {
+    emptyEl.classList.remove('hidden');
+    practiceBtn.disabled = true;
+    clearBtn.disabled = true;
+    return;
+  }
+
+  emptyEl.classList.add('hidden');
+  practiceBtn.disabled = false;
+  clearBtn.disabled = false;
+
+  ids.forEach(id => {
+    const q = QUESTIONS.find(q => q.id === id);
+    if (!q) return;
+    const data = wrong[id];
+    listEl.innerHTML += `
+      <div class="wrong-item">
+        <div class="q-text"><strong>[${q.subject}]</strong> ${q.question.slice(0, 60)}${q.question.length > 60 ? '...' : ''}</div>
+        <div class="q-answer">오답 ${data.count}회 | 마지막: ${data.lastWrong}</div>
+      </div>`;
+  });
+}
+
+function startWrongPractice() {
+  const wrong = getWrongAnswers();
+  const ids = Object.keys(wrong).map(Number);
+  wrongPracticeState.questions = QUESTIONS.filter(q => ids.includes(q.id));
+  wrongPracticeState.currentIndex = 0;
+  wrongPracticeState.answered = {};
+
+  if (wrongPracticeState.questions.length === 0) return;
+  renderWrongPracticeQuestion(0);
+  showScreen('screen-wrong-practice');
+}
+
+function renderWrongPracticeQuestion(index) {
+  const q = wrongPracticeState.questions[index];
+  wrongPracticeState.currentIndex = index;
+
+  document.getElementById('wrong-practice-subject').textContent = q.subject;
+  document.getElementById('wrong-practice-question').textContent = q.question;
+  document.getElementById('wrong-practice-progress').textContent =
+    (index + 1) + ' / ' + wrongPracticeState.questions.length;
+
+  const img = document.getElementById('wrong-practice-image');
+  if (q.image) {
+    img.src = q.image;
+    img.classList.remove('hidden');
+  } else {
+    img.classList.add('hidden');
+  }
+
+  const fb = document.getElementById('wrong-practice-feedback');
+  const exp = document.getElementById('wrong-practice-explanation');
+  fb.classList.add('hidden');
+  exp.classList.add('hidden');
+
+  const opts = document.getElementById('wrong-practice-options');
+  opts.innerHTML = '';
+  const answered = wrongPracticeState.answered[q.id];
+
+  q.options.forEach((text, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = '<span>' + (i + 1) + '.</span> ' + text;
+
+    if (answered !== undefined) {
+      btn.disabled = true;
+      if (i + 1 === q.answer) btn.classList.add('correct');
+      else if (i + 1 === answered) btn.classList.add('wrong');
+    }
+
+    btn.addEventListener('click', () => {
+      if (wrongPracticeState.answered[q.id] !== undefined) return;
+      wrongPracticeState.answered[q.id] = i + 1;
+      const isCorrect = (i + 1 === q.answer);
+
+      opts.querySelectorAll('.option-btn').forEach((b, bi) => {
+        b.disabled = true;
+        if (bi + 1 === q.answer) b.classList.add('correct');
+        else if (bi + 1 === i + 1) b.classList.add('wrong');
+      });
+
+      fb.textContent = isCorrect ? '✅ 정답입니다!' : '❌ 오답입니다.';
+      fb.className = 'feedback ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+      fb.classList.remove('hidden');
+
+      if (q.explanation) {
+        exp.textContent = '💡 해설: ' + q.explanation;
+        exp.classList.remove('hidden');
+      }
+    });
+
+    opts.appendChild(btn);
+  });
+
+  if (answered !== undefined) {
+    const isCorrect = answered === q.answer;
+    fb.textContent = isCorrect ? '✅ 정답입니다!' : '❌ 오답입니다.';
+    fb.className = 'feedback ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+    fb.classList.remove('hidden');
+    if (q.explanation) {
+      exp.textContent = '💡 해설: ' + q.explanation;
+      exp.classList.remove('hidden');
+    }
+  }
+
+  document.getElementById('wrong-practice-prev-btn').disabled = index === 0;
+  document.getElementById('wrong-practice-next-btn').disabled =
+    index === wrongPracticeState.questions.length - 1;
+}
+
+function moveWrongPracticeQuestion(dir) {
+  const next = wrongPracticeState.currentIndex + dir;
+  if (next >= 0 && next < wrongPracticeState.questions.length) {
+    renderWrongPracticeQuestion(next);
+  }
+}
+
+function clearWrongNotes() {
+  if (!confirm('오답노트를 전부 초기화할까요?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  renderWrongNotes();
+  renderHome();
+}
 
 // ===== 이벤트 바인딩 =====
 document.addEventListener('DOMContentLoaded', () => {
