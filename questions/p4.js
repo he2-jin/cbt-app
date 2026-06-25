@@ -1,19 +1,9 @@
-// questions.js
-// 문제 추가 방법:
-//   1. 이 파일에 객체를 추가
-//   2. image 있는 문제: images/ 폴더에 이미지 파일 저장 후 경로 입력 (예: "images/p4/p4-12.png")
-//   3. image 없는 문제: image: "" 로 설정
-// subject 값은 아래 7개 중 하나를 정확히 입력:
-//   "제1편 가구와 목공에 설계"
-//   "제2편 목재 재료"
-//   "제3편 목재 가공"
-//   "제4편 맞춤과 이음"
-//   "제5편 세공과 수공구"
-//   "제6편 도장과 접착제"
-//   "제7편 가구 조립 작업"
-const QUESTIONS = [
+// questions/p4.js — 제4편 맞춤과 이음
+// id 규칙: 4xx (401 = 제4편 1번 ... 467 = 제4편 67번)
+// 이미지: images/p4/ 폴더
+window.QUESTIONS = (window.QUESTIONS || []).concat([
   {
-    id: 1,
+    id: 401,
     subject: "제4편 맞춤과 이음",
     question: "목재의 결구법을 크게 분류할 때 해당되지 않는 것은?",
     image: "",
@@ -27,7 +17,7 @@ const QUESTIONS = [
     explanation: "목재의 결구법은 부재의 이음·맞춤·붙임 3가지로 분류한다."
   },
   {
-    id: 2,
+    id: 402,
     subject: "제4편 맞춤과 이음",
     question: "결구법에 대한 설명으로 옳지 않은 것은?",
     image: "",
@@ -41,7 +31,7 @@ const QUESTIONS = [
     explanation: "연결 부재가 구조적 역할을 할 경우, 부재에 작용하는 응력에 따라 결구 방법이 달라진다."
   },
   {
-    id: 3,
+    id: 403,
     subject: "제4편 맞춤과 이음",
     question: "합판과 같이 넓은 면적의 목재가 필요할 때 사용하는 결구법은?",
     image: "",
@@ -55,7 +45,7 @@ const QUESTIONS = [
     explanation: "합판처럼 넓은 면적이 필요할 때는 작은 폭의 부재를 이어 붙이는 '붙임'을 사용한다."
   },
   {
-    id: 4,
+    id: 404,
     subject: "제4편 맞춤과 이음",
     question: "다음 중 이음에 대한 설명으로 틀린 것은?",
     image: "",
@@ -69,7 +59,7 @@ const QUESTIONS = [
     explanation: "이음은 부재를 길이 방향으로 이어가는 방법이다. 대각선 방향이 아니다."
   },
   {
-    id: 5,
+    id: 405,
     subject: "제4편 맞춤과 이음",
     question: "다음 중 맞춤에 대한 설명이 아닌 것은?",
     image: "",
@@ -83,7 +73,7 @@ const QUESTIONS = [
     explanation: "부재를 길이 방향으로 이어가는 것은 이음이다. 맞춤은 두 부재가 직교·경사지게 짜이는 것이다."
   },
   {
-    id: 6,
+    id: 406,
     subject: "제4편 맞춤과 이음",
     question: "이음과 맞춤에서의 유의사항 중 옳지 않은 것은?",
     image: "",
@@ -97,7 +87,7 @@ const QUESTIONS = [
     explanation: "이음·맞춤은 응력이 작은 곳에서 접합해야 한다."
   },
   {
-    id: 7,
+    id: 407,
     subject: "제4편 맞춤과 이음",
     question: "반턱맞춤의 종류가 아닌 것은?",
     image: "",
@@ -111,7 +101,7 @@ const QUESTIONS = [
     explanation: "반턱맞춤에는 구형·T형·주먹장·십자형이 있다. '남김'은 해당하지 않는다."
   },
   {
-    id: 8,
+    id: 408,
     subject: "제4편 맞춤과 이음",
     question: "빡빡한 장부맞춤을 할 때 장부 두께의 필요한 수치를 얼마 정도로 여유를 두는 것이 좋은가?",
     image: "",
@@ -125,7 +115,7 @@ const QUESTIONS = [
     explanation: "빡빡한 장부맞춤은 장부 두께에 0.5~1mm 정도 여유를 두는 것이 적당하다."
   },
   {
-    id: 9,
+    id: 409,
     subject: "제4편 맞춤과 이음",
     question: "꽃임촉맞춤에 대한 설명으로 틀린 것은?",
     image: "",
@@ -139,7 +129,7 @@ const QUESTIONS = [
     explanation: "끼움촉맞춤은 기계를 사용해 대량 가공이 쉬워 양산가구 접합에 많이 쓰인다."
   },
   {
-    id: 10,
+    id: 410,
     subject: "제4편 맞춤과 이음",
     question: "꽃임촉 만들기에 대한 설명 중 틀린 것은?",
     image: "",
@@ -153,7 +143,7 @@ const QUESTIONS = [
     explanation: "끼움촉은 강한 힘을 받으므로 연한 재료보다 단단하고 내구성 좋은 재료가 적합하다."
   },
   {
-    id: 11,
+    id: 411,
     subject: "제4편 맞춤과 이음",
     question: "꽃임촉맞춤 작업 시 가장 중요하고 어려운 작업은?",
     image: "",
@@ -167,7 +157,7 @@ const QUESTIONS = [
     explanation: "끼움촉 구멍을 정확히 수직으로 바로 뚫는 것이 가장 중요하고 어려운 작업이다."
   },
   {
-    id: 12,
+    id: 412,
     subject: "제4편 맞춤과 이음",
     question: "다음 도면과 같이 제작하려면 꽃임촉은 몇 개 필요한가?",
     image: "images/p4/p4-12.png",
@@ -181,7 +171,7 @@ const QUESTIONS = [
     explanation: "아래 11개 + 위 11개 = 22개가 필요하다."
   },
   {
-    id: 13,
+    id: 413,
     subject: "제4편 맞춤과 이음",
     question: "비교적 작업 방법이 쉽고 기계를 사용한 양산가구의 접합에 많이 사용되는 맞춤은?",
     image: "",
@@ -195,7 +185,7 @@ const QUESTIONS = [
     explanation: "끼움촉맞춤은 작업이 쉽고 기계 사용으로 양산가구 접합에 많이 쓰인다."
   },
   {
-    id: 14,
+    id: 414,
     subject: "제4편 맞춤과 이음",
     question: "작은 부재를 이용하여 넓은 부재를 얻는 방법은?",
     image: "",
@@ -209,7 +199,7 @@ const QUESTIONS = [
     explanation: "쪽매맞춤은 작은 부재를 옆으로 이어 넓은 판재를 얻는 방법이다."
   },
   {
-    id: 15,
+    id: 415,
     subject: "제4편 맞춤과 이음",
     question: "목재의 이음 및 맞춤에 관한 내용 중 옳지 않은 것은?",
     image: "",
@@ -223,7 +213,7 @@ const QUESTIONS = [
     explanation: "이음·맞춤은 공작이 간단한 것을 쓰며, 복잡하게 하지 않는다."
   },
   {
-    id: 16,
+    id: 416,
     subject: "제4편 맞춤과 이음",
     question: "다음 그림은 몇 장 사개맞춤인가?",
     image: "images/p4/p4-16.png",
@@ -237,7 +227,7 @@ const QUESTIONS = [
     explanation: "사개맞춤은 필요한 강도에 따라 2장·3장·5장을 만든다. 그림은 석 장 사개맞춤이다."
   },
   {
-    id: 17,
+    id: 417,
     subject: "제4편 맞춤과 이음",
     question: "목재의 맞춤 기법 중 한 부재의 나뭇결이나 나뭇결과 직각 방향으로 오목하게 들어가도록 깎아내고, 다른 부재의 옆면이나 마구리면을 맞추는 기법은?",
     image: "",
@@ -251,7 +241,7 @@ const QUESTIONS = [
     explanation: "한 부재를 오목하게 깎아 다른 부재의 옆면·마구리면을 맞추는 것은 홈맞춤이다."
   },
   {
-    id: 18,
+    id: 418,
     subject: "제4편 맞춤과 이음",
     question: "꿸대와 기둥이나 동바리와의 맞춤과 같이 큰 부재와 작은 부재를 통째로 끼워 맞추는 것은?",
     image: "",
@@ -265,7 +255,7 @@ const QUESTIONS = [
     explanation: "큰 부재와 작은 부재를 통째로 끼워 맞추는 것은 통맞춤이다."
   },
   {
-    id: 19,
+    id: 419,
     subject: "제4편 맞춤과 이음",
     question: "8각 상자를 제작하기 위해 그림과 같은 마구릿대를 만들었다. A부분의 각도를 얼마로 해야 되는가?",
     image: "images/p4/p4-19.png",
@@ -279,7 +269,7 @@ const QUESTIONS = [
     explanation: "마구릿대 각도 = 180 - [(180 - (360÷n)) ÷ 2], 8각이므로 112.5°."
   },
   {
-    id: 20,
+    id: 420,
     subject: "제4편 맞춤과 이음",
     question: "다음 중 맞춤 공작의 기본사항에 해당하지 않는 것은?",
     image: "",
@@ -293,7 +283,7 @@ const QUESTIONS = [
     explanation: "맞춤 공작 기본은 마름질 정확·똑바로 켜기·바른 각도 자르기·평면에 가깝게 깎기다. 사포질은 해당 없다."
   },
   {
-    id: 21,
+    id: 421,
     subject: "제4편 맞춤과 이음",
     question: "서랍을 다음 그림과 같이 만들 때 맞춤의 명칭으로 옳은 것은?",
     image: "images/p4/p4-21.png",
@@ -307,7 +297,7 @@ const QUESTIONS = [
     explanation: "그림은 사개턱솔 통맞춤이다."
   },
   {
-    id: 22,
+    id: 422,
     subject: "제4편 맞춤과 이음",
     question: "가구 제작에 주로 쓰이는 맞춤의 명칭에 해당하지 않는 것은?",
     image: "",
@@ -321,7 +311,7 @@ const QUESTIONS = [
     explanation: "은장맞춤은 건축에서 보와 도리에 사용하는 맞춤이다."
   },
   {
-    id: 23,
+    id: 423,
     subject: "제4편 맞춤과 이음",
     question: "서랍짜기 방법으로 옳지 않은 것은?",
     image: "",
@@ -335,7 +325,7 @@ const QUESTIONS = [
     explanation: "주먹장으로 짜기는 견고하여 고급 장에도 사용된다."
   },
   {
-    id: 24,
+    id: 424,
     subject: "제4편 맞춤과 이음",
     question: "두 각재의 맞춤 방법 중 가장 옳은 것은?",
     image: "images/p4/p4-24.png",
@@ -349,7 +339,7 @@ const QUESTIONS = [
     explanation: "두 각재의 맞춤으로는 ②번이 가장 옳다."
   },
   {
-    id: 25,
+    id: 425,
     subject: "제4편 맞춤과 이음",
     question: "옆판을 천판에 접착시키는 방법 중 가장 좋은 것은?",
     image: "images/p4/p4-25.png",
@@ -363,7 +353,7 @@ const QUESTIONS = [
     explanation: "옆판을 천판에 접착할 때는 ②번 방법이 가장 좋다."
   },
   {
-    id: 26,
+    id: 426,
     subject: "제4편 맞춤과 이음",
     question: "서랍맞춤으로 가장 견고한 맞춤 방법은?",
     image: "",
@@ -377,7 +367,7 @@ const QUESTIONS = [
     explanation: "서랍맞춤으로 가장 견고한 것은 물매가 있는 주먹장맞춤이다."
   },
   {
-    id: 27,
+    id: 427,
     subject: "제4편 맞춤과 이음",
     question: "판재에 숫주먹장 4개를 가공하려면 몇 등분을 해야 하는가?",
     image: "",
@@ -391,7 +381,7 @@ const QUESTIONS = [
     explanation: "숫주먹장 n개를 가공하려면 (2n+1)등분 해야 하므로 4개면 9등분이다."
   },
   {
-    id: 28,
+    id: 428,
     subject: "제4편 맞춤과 이음",
     question: "다음 그림과 같은 접합의 명칭은?",
     image: "images/p4/p4-28.png",
@@ -405,7 +395,7 @@ const QUESTIONS = [
     explanation: "그림은 숨은 주먹장맞춤이다."
   },
   {
-    id: 29,
+    id: 429,
     subject: "제4편 맞춤과 이음",
     question: "암부재 주먹장 만들기 방법으로 옳지 않은 것은?",
     image: "",
@@ -419,7 +409,7 @@ const QUESTIONS = [
     explanation: "암부재 주먹장은 표시선 전체를 따내야 하며, 숫부재처럼 일부만 따내지 않는다."
   },
   {
-    id: 30,
+    id: 430,
     subject: "제4편 맞춤과 이음",
     question: "인장력을 받는 곳에 가장 많이 사용되는 맞춤 방법은?",
     image: "",
@@ -433,7 +423,7 @@ const QUESTIONS = [
     explanation: "물매가 있어 빠지지 않는 주먹장맞춤이 인장력을 받는 곳에 가장 많이 쓰인다."
   },
   {
-    id: 31,
+    id: 431,
     subject: "제4편 맞춤과 이음",
     question: "그림과 같은 주먹장 만들기에서 물매 정도인 A : B의 비율로 적당한 것은?",
     image: "images/p4/p4-31.png",
@@ -447,7 +437,7 @@ const QUESTIONS = [
     explanation: "주먹장 물매는 A : B = 6 : 1 정도가 적당하다."
   },
   {
-    id: 32,
+    id: 432,
     subject: "제4편 맞춤과 이음",
     question: "그림과 같은 맞춤을 무엇이라 하는가?",
     image: "images/p4/p4-32.png",
@@ -461,7 +451,7 @@ const QUESTIONS = [
     explanation: "그림은 주먹장맞춤이다."
   },
   {
-    id: 33,
+    id: 433,
     subject: "제4편 맞춤과 이음",
     question: "서랍의 앞널과 옆널에 주로 사용되는 맞춤은?",
     image: "",
@@ -475,7 +465,7 @@ const QUESTIONS = [
     explanation: "서랍 앞널과 옆널에는 마구리가 보이지 않는 남김 주먹장맞춤을 주로 쓴다."
   },
   {
-    id: 34,
+    id: 434,
     subject: "제4편 맞춤과 이음",
     question: "주먹장맞춤에서의 일반적인 주먹장 경사도는?",
     image: "",
@@ -489,7 +479,7 @@ const QUESTIONS = [
     explanation: "주먹장의 일반적인 경사도는 약 18°이다."
   },
   {
-    id: 35,
+    id: 435,
     subject: "제4편 맞춤과 이음",
     question: "가구 내에 작용하는 힘의 관계에서 주먹장맞춤이 꼭 필요한 경우는?",
     image: "",
@@ -503,7 +493,7 @@ const QUESTIONS = [
     explanation: "주먹장맞춤은 강한 인장력이 요구될 때 꼭 필요하다."
   },
   {
-    id: 36,
+    id: 436,
     subject: "제4편 맞춤과 이음",
     question: "서랍의 제작방법 중 맞춤 기법의 장점을 설명한 것으로 틀린 것은?",
     image: "",
@@ -517,7 +507,7 @@ const QUESTIONS = [
     explanation: "맞춤 기법은 수작업이 많아 대량 생산에는 적합하지 않다."
   },
   {
-    id: 37,
+    id: 437,
     subject: "제4편 맞춤과 이음",
     question: "사개에 변형을 주어 한쪽에서 빠지지 않도록 하는 맞춤 형태로, 인장을 요하는 곳의 맞춤으로 가장 좋은 것은?",
     image: "",
@@ -531,7 +521,7 @@ const QUESTIONS = [
     explanation: "사개에 변형을 주어 빠지지 않게 하는 인장용 맞춤은 주먹장맞춤이다."
   },
   {
-    id: 38,
+    id: 438,
     subject: "제4편 맞춤과 이음",
     question: "다음 중 사진틀 제작 시 모서리 맞춤은 어느 것이 좋은가?",
     image: "",
@@ -545,7 +535,7 @@ const QUESTIONS = [
     explanation: "사진틀 모서리에는 끼움촉 연귀맞춤이 좋다."
   },
   {
-    id: 39,
+    id: 439,
     subject: "제4편 맞춤과 이음",
     question: "다음 중 연귀맞춤을 이용하지 않는 것은?",
     image: "",
@@ -559,7 +549,7 @@ const QUESTIONS = [
     explanation: "연귀맞춤은 상자·사진틀·의자 안장 등에 쓰이며, 책상다리에는 쓰지 않는다."
   },
   {
-    id: 40,
+    id: 440,
     subject: "제4편 맞춤과 이음",
     question: "다음 그림에 알맞은 접합의 명칭은?",
     image: "images/p4/p4-40.png",
@@ -573,7 +563,7 @@ const QUESTIONS = [
     explanation: "면과 면을 직각으로 맞추기 위해 마구리가 보이지 않도록 서로 45°로 잘라 맞춘 것은 연귀이다."
   },
   {
-    id: 41,
+    id: 441,
     subject: "제4편 맞춤과 이음",
     question: "다음 그림의 접합 명칭은?",
     image: "images/p4/p4-41.png",
@@ -587,7 +577,7 @@ const QUESTIONS = [
     explanation: "그림은 반연귀맞춤이다."
   },
   {
-    id: 42,
+    id: 442,
     subject: "제4편 맞춤과 이음",
     question: "가공물의 마구리를 1/2로 깎아서 모서리와 모서리를 맞추는 맞춤은?",
     image: "",
@@ -601,7 +591,7 @@ const QUESTIONS = [
     explanation: "가공물의 마구리를 깎아 모서리끼리 맞추는 것은 연귀맞춤이다."
   },
   {
-    id: 43,
+    id: 443,
     subject: "제4편 맞춤과 이음",
     question: "다음 중 목재의 마구리 부분을 감추기 위한 맞춤은?",
     image: "",
@@ -615,7 +605,7 @@ const QUESTIONS = [
     explanation: "목재의 마구리 부분을 감추기 위한 맞춤은 연귀맞춤이다."
   },
   {
-    id: 44,
+    id: 444,
     subject: "제4편 맞춤과 이음",
     question: "그림과 같은 목재 맞춤의 명칭은?",
     image: "images/p4/p4-44.png",
@@ -629,7 +619,7 @@ const QUESTIONS = [
     explanation: "그림은 안촉연귀이다."
   },
   {
-    id: 45,
+    id: 445,
     subject: "제4편 맞춤과 이음",
     question: "부재의 마구리를 45°로 가공하여 모서리 부분을 직각이 되게 맞춘 것은?",
     image: "",
@@ -643,7 +633,7 @@ const QUESTIONS = [
     explanation: "마구리를 45°로 가공해 모서리를 직각으로 맞춘 것은 연귀맞춤이다."
   },
   {
-    id: 46,
+    id: 446,
     subject: "제4편 맞춤과 이음",
     question: "액자틀을 만드는 데 가장 많이 사용하는 맞춤 방법은?",
     image: "",
@@ -657,7 +647,7 @@ const QUESTIONS = [
     explanation: "액자틀에 가장 많이 쓰는 것은 연귀맞춤이다."
   },
   {
-    id: 47,
+    id: 447,
     subject: "제4편 맞춤과 이음",
     question: "일반적으로 사개맞춤 기법을 사용하지 않는 것은?",
     image: "",
@@ -671,7 +661,7 @@ const QUESTIONS = [
     explanation: "사개맞춤은 통·사방탁자·문갑 등에 쓰이며 책상다리에는 쓰지 않는다."
   },
   {
-    id: 48,
+    id: 448,
     subject: "제4편 맞춤과 이음",
     question: "건조에 따른 목재의 변형을 방지하고 넓은 판재를 얻을 수 있는 맞춤 방법은?",
     image: "",
@@ -685,7 +675,7 @@ const QUESTIONS = [
     explanation: "쪽매맞춤은 건조에 따른 변형을 막고 넓은 판재를 얻는 맞춤이다."
   },
   {
-    id: 49,
+    id: 449,
     subject: "제4편 맞춤과 이음",
     question: "다음 중 맞춤과 용도가 서로 잘못 짝지어진 것은?",
     image: "",
@@ -699,7 +689,7 @@ const QUESTIONS = [
     explanation: "구형 반턱맞춤은 철판류·문틀·액자틀에 쓰며, 고급 제품에는 사용하지 않는다."
   },
   {
-    id: 50,
+    id: 450,
     subject: "제4편 맞춤과 이음",
     question: "짧은 장부맞춤 가공 시 장부 길이와 장부 구멍 깊이의 관계는?",
     image: "",
@@ -713,7 +703,7 @@ const QUESTIONS = [
     explanation: "짧은 장부맞춤은 장부 구멍 깊이를 1~2mm 더 판다."
   },
   {
-    id: 51,
+    id: 451,
     subject: "제4편 맞춤과 이음",
     question: "장부의 두께는 한 장 장부에서 부재 두께의 어느 정도가 표준인가?",
     image: "",
@@ -727,7 +717,7 @@ const QUESTIONS = [
     explanation: "장부 두께는 1장 장부에서 부재 두께의 1/3이 표준이다(2장은 1/5)."
   },
   {
-    id: 52,
+    id: 452,
     subject: "제4편 맞춤과 이음",
     question: "장부 구멍파기를 할 때 유의사항으로 옳지 않은 것은?",
     image: "",
@@ -741,7 +731,7 @@ const QUESTIONS = [
     explanation: "구멍이 큰 것과 작은 것이 있으면 작은 것을 먼저 판다. 큰 것을 먼저 판다는 ③은 옳지 않다."
   },
   {
-    id: 53,
+    id: 453,
     subject: "제4편 맞춤과 이음",
     question: "장부맞춤의 순서로 옳은 것은?",
     image: "",
@@ -755,7 +745,7 @@ const QUESTIONS = [
     explanation: "장부맞춤 순서: 마름질 → 장부 구멍 파기 → 장부켜기 → 어깨자르기 → 조립."
   },
   {
-    id: 54,
+    id: 454,
     subject: "제4편 맞춤과 이음",
     question: "장부맞춤의 먹줄치기를 하는 방법을 설명한 내용 중 틀린 것은?",
     image: "",
@@ -769,7 +759,7 @@ const QUESTIONS = [
     explanation: "오차를 줄이기 위해 장부용 그무개와 장부 구멍용 그무개를 같이 사용한다(따로 준비하지 않는다)."
   },
   {
-    id: 55,
+    id: 455,
     subject: "제4편 맞춤과 이음",
     question: "장부맞춤의 작업 공정 중 옳지 않은 것은?",
     image: "",
@@ -783,7 +773,7 @@ const QUESTIONS = [
     explanation: "장부켜기를 먼저 하고 장부 어깨를 나중에 자른다. ①은 옳지 않다."
   },
   {
-    id: 56,
+    id: 456,
     subject: "제4편 맞춤과 이음",
     question: "목재를 접합하여 의자의 좌판이나 테이블 다리 등을 제작하는 데 사용하는 이음은?",
     image: "",
@@ -797,7 +787,7 @@ const QUESTIONS = [
     explanation: "의자의 좌판이나 테이블 다리 제작에는 결이음을 사용한다."
   },
   {
-    id: 57,
+    id: 457,
     subject: "제4편 맞춤과 이음",
     question: "다음 그림과 같은 이음의 명칭은?",
     image: "images/p4/p4-57.png",
@@ -811,7 +801,7 @@ const QUESTIONS = [
     explanation: "그림은 반턱이음이다."
   },
   {
-    id: 58,
+    id: 458,
     subject: "제4편 맞춤과 이음",
     question: "빗이음에서 이음의 길이는 재춤(깊이)의 몇 배 정도로 하는가?",
     image: "",
@@ -825,7 +815,7 @@ const QUESTIONS = [
     explanation: "빗이음 길이는 재춤(깊이)의 1.5~2.0배로 한다."
   },
   {
-    id: 59,
+    id: 459,
     subject: "제4편 맞춤과 이음",
     question: "그림과 같은 이음법의 명칭은?",
     image: "images/p4/p4-59.png",
@@ -839,7 +829,7 @@ const QUESTIONS = [
     explanation: "그림은 나비장이음이다. 두 부재 사이에 별도의 나비장을 끼워 연결한다."
   },
   {
-    id: 60,
+    id: 460,
     subject: "제4편 맞춤과 이음",
     question: "다음 중 턱솔이음에 대한 설명을 잘못 나타낸 것은?",
     image: "",
@@ -853,7 +843,7 @@ const QUESTIONS = [
     explanation: "양쪽 목재의 반씩을 따내어 잇는 사모턱이음은 반턱이음이다. ①은 잘못된 설명이다."
   },
   {
-    id: 61,
+    id: 461,
     subject: "제4편 맞춤과 이음",
     question: "쪽매 중 가장 튼튼하고 견고한 것은?",
     image: "",
@@ -867,7 +857,7 @@ const QUESTIONS = [
     explanation: "쪽매 중 가장 튼튼하고 견고하여 강도가 큰 것은 제혀쪽매이다."
   },
   {
-    id: 62,
+    id: 462,
     subject: "제4편 맞춤과 이음",
     question: "다음 중 쪽매 방법이 좋은 것은?",
     image: "images/p4/p4-62.png",
@@ -881,7 +871,7 @@ const QUESTIONS = [
     explanation: "쪽매 방법으로는 ①번이 좋다."
   },
   {
-    id: 63,
+    id: 463,
     subject: "제4편 맞춤과 이음",
     question: "인장력을 받는 곳에 주로 사용하며 주먹장맞춤보다 튼튼한 것은?",
     image: "",
@@ -895,7 +885,7 @@ const QUESTIONS = [
     explanation: "인장력을 받는 곳에 주먹장맞춤보다 튼튼한 것은 메뚜기장이음이다."
   },
   {
-    id: 64,
+    id: 464,
     subject: "제4편 맞춤과 이음",
     question: "마루널쪽매로 거의 사용하지 않는 것은?",
     image: "",
@@ -909,7 +899,7 @@ const QUESTIONS = [
     explanation: "마루널쪽매 중 가장 좋은 것은 제혀쪽매이며, 연귀쪽매는 거의 사용하지 않는다."
   },
   {
-    id: 65,
+    id: 465,
     subject: "제4편 맞춤과 이음",
     question: "부재 옆이 서로 물려지도록 혀를 내고 옆에서 못질하여 못머리를 감추어, 마루의 진동에도 못이 솟아 올라오지 않게 한 것은?",
     image: "",
@@ -923,7 +913,7 @@ const QUESTIONS = [
     explanation: "혀를 내고 옆에서 못질해 못머리를 감추는 것은 제혀쪽매이다."
   },
   {
-    id: 66,
+    id: 466,
     subject: "제4편 맞춤과 이음",
     question: "널 옆을 곱게 대패질해서 서로 맞대어 깔고, 그 위에서 못질하여 만든 쪽매는?",
     image: "",
@@ -937,7 +927,7 @@ const QUESTIONS = [
     explanation: "널 옆을 대패질해 맞대어 깔고 위에서 못질한 것은 맞댄쪽매이다."
   },
   {
-    id: 67,
+    id: 467,
     subject: "제4편 맞춤과 이음",
     question: "다음 쪽매 중 딴혀쪽매는?",
     image: "images/p4/p4-67.png",
@@ -950,4 +940,4 @@ const QUESTIONS = [
     answer: 4,
     explanation: "딴혀쪽매는 ④번이다(①맞댄쪽매 ②빗쪽매 ③제혀쪽매 ④딴혀쪽매)."
   }
-];
+]);
