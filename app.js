@@ -91,13 +91,181 @@ function renderHome() {
   });
 }
 
-// ===== 실전모드 (Task 4에서 구현) =====
-function startExam() {}
-function renderExamQuestion(index) {}
-function moveExamQuestion(dir) {}
-function submitExam() {}
+// ===== 실전모드 =====
+function startExam() {
+  examState.answers = {};
+  examState.currentIndex = 0;
+  examState.questions = [...QUESTIONS];
+  examState.timeLeft = 3600;
+
+  renderExamNav();
+  renderExamQuestion(0);
+  startExamTimer();
+  showScreen('screen-exam');
+}
+
+function startExamTimer() {
+  clearInterval(examState.timer);
+  updateTimerDisplay();
+  examState.timer = setInterval(() => {
+    examState.timeLeft -= 1;
+    updateTimerDisplay();
+    if (examState.timeLeft <= 0) {
+      clearInterval(examState.timer);
+      submitExam();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(examState.timeLeft / 60).toString().padStart(2, '0');
+  const s = (examState.timeLeft % 60).toString().padStart(2, '0');
+  const el = document.getElementById('exam-timer');
+  el.textContent = m + ':' + s;
+  if (examState.timeLeft <= 300) el.classList.add('warning');
+  else el.classList.remove('warning');
+}
+
+function renderExamNav() {
+  const nav = document.getElementById('question-nav');
+  nav.innerHTML = '';
+  examState.questions.forEach((q, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'nav-num';
+    btn.textContent = i + 1;
+    btn.addEventListener('click', () => {
+      examState.currentIndex = i;
+      renderExamQuestion(i);
+    });
+    nav.appendChild(btn);
+  });
+}
+
+function updateExamNav() {
+  const btns = document.querySelectorAll('.nav-num');
+  btns.forEach((btn, i) => {
+    btn.classList.toggle('answered', !!examState.answers[examState.questions[i].id]);
+    btn.classList.toggle('current', i === examState.currentIndex);
+  });
+}
+
+function renderExamQuestion(index) {
+  const q = examState.questions[index];
+  examState.currentIndex = index;
+
+  document.getElementById('exam-subject').textContent = q.subject;
+  document.getElementById('exam-number').textContent = (index + 1) + '번';
+  document.getElementById('exam-question').textContent = q.question;
+  document.getElementById('exam-progress').textContent = (index + 1) + ' / ' + examState.questions.length;
+
+  const img = document.getElementById('exam-image');
+  if (q.image) {
+    img.src = q.image;
+    img.classList.remove('hidden');
+  } else {
+    img.classList.add('hidden');
+  }
+
+  const opts = document.getElementById('exam-options');
+  opts.innerHTML = '';
+  q.options.forEach((text, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    if (examState.answers[q.id] === i + 1) btn.classList.add('selected');
+    btn.innerHTML = '<span>' + (i + 1) + '.</span> ' + text;
+    btn.addEventListener('click', () => selectExamAnswer(q.id, i + 1));
+    opts.appendChild(btn);
+  });
+
+  updateExamNav();
+
+  document.getElementById('exam-prev-btn').disabled = index === 0;
+  document.getElementById('exam-next-btn').disabled = index === examState.questions.length - 1;
+}
+
+function selectExamAnswer(qId, option) {
+  examState.answers[qId] = option;
+  const index = examState.questions.findIndex(q => q.id === qId);
+  renderExamQuestion(index);
+}
+
+function moveExamQuestion(dir) {
+  const next = examState.currentIndex + dir;
+  if (next >= 0 && next < examState.questions.length) {
+    renderExamQuestion(next);
+  }
+}
+
+function submitExam() {
+  clearInterval(examState.timer);
+
+  const wrongIds = [];
+  let correct = 0;
+  const subjectStats = {};
+
+  examState.questions.forEach(q => {
+    if (!subjectStats[q.subject]) subjectStats[q.subject] = { correct: 0, total: 0 };
+    subjectStats[q.subject].total += 1;
+
+    if (examState.answers[q.id] === q.answer) {
+      correct += 1;
+      subjectStats[q.subject].correct += 1;
+    } else {
+      wrongIds.push(q.id);
+    }
+  });
+
+  const score = Math.round((correct / examState.questions.length) * 100);
+  renderExamResult(score, wrongIds, subjectStats);
+  showScreen('screen-exam-result');
+}
+
+function renderExamResult(score, wrongIds, subjectStats) {
+  lastWrongIds = wrongIds;
+
+  document.getElementById('result-score').textContent = score + '점';
+  const passEl = document.getElementById('result-pass');
+  passEl.textContent = score >= 60 ? '합격' : '불합격';
+  passEl.className = 'pass-badge ' + (score >= 60 ? 'pass' : 'fail');
+
+  const subjectEl = document.getElementById('subject-scores');
+  subjectEl.innerHTML = '';
+  Object.entries(subjectStats).forEach(([name, stat]) => {
+    const pct = Math.round((stat.correct / stat.total) * 100);
+    subjectEl.innerHTML += `
+      <div class="subject-score-card">
+        <div class="name">${name}</div>
+        <div class="val">${pct}%</div>
+        <div style="font-size:0.8rem;color:#9ca3af">${stat.correct}/${stat.total}</div>
+      </div>`;
+  });
+
+  const wrongList = document.getElementById('result-wrong-list');
+  wrongList.innerHTML = '';
+  if (wrongIds.length === 0) {
+    wrongList.innerHTML = '<p style="color:#16a34a">전부 정답!</p>';
+  } else {
+    wrongIds.forEach(id => {
+      const q = QUESTIONS.find(q => q.id === id);
+      const myAns = examState.answers[id];
+      wrongList.innerHTML += `
+        <div class="wrong-item">
+          <div class="q-text">${q.question.slice(0, 60)}${q.question.length > 60 ? '...' : ''}</div>
+          <div class="q-answer">
+            내 답: <span>${myAns ? myAns + '. ' + q.options[myAns - 1] : '미답'}</span>
+            &nbsp;|&nbsp; 정답: ${q.answer}. ${q.options[q.answer - 1]}
+          </div>
+        </div>`;
+    });
+  }
+}
+
 let lastWrongIds = [];
-function addResultToWrong() {}
+
+function addResultToWrong() {
+  addToWrongAnswers(lastWrongIds);
+  alert('오답노트에 추가되었습니다.');
+}
 
 // ===== 과목별 연습모드 (Task 5에서 구현) =====
 function renderPracticeSelect() {}
