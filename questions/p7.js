@@ -1,9 +1,9 @@
 // questions/p7.js — 제7편 가구 조립 작업
-// id 규칙: 7xx (701 = 제7편 1번 ... 757 = 제7편 57번)
+// id 규칙: 70xx (7001 = 제7편 1번 ... 7057 = 제7편 57번)
 // 이미지: images/p7/ 폴더
 window.QUESTIONS = (window.QUESTIONS || []).concat([
   {
-    id: 701,
+    id: 7001,
     subject: "제7편 가구 조립 작업",
     question: "경화시간이 빠르고 경화 후 수축이 거의 없지만 퍼티 중 가장 비싼 눈메움 재료는?",
     image: "",
@@ -12,7 +12,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "에폭시 퍼티는 경화가 빠르고 경화 후 수축이 거의 없지만 퍼티 중 가장 비싸다."
   },
   {
-    id: 702,
+    id: 7002,
     subject: "제7편 가구 조립 작업",
     question: "결점에 따른 보수 방법으로 틀린 것은?",
     image: "",
@@ -26,7 +26,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "가늘고 길게 갈라진 할렬의 경우 묽은 순간접착제를 사용하여 보수해야 한다."
   },
   {
-    id: 703,
+    id: 7003,
     subject: "제7편 가구 조립 작업",
     question: "보수 방법을 설명한 것 중 틀린 것은?",
     image: "",
@@ -40,7 +40,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "목재 뜯김이 있을 때 보수에 사용되는 목재는 정치수보다 약간 크게 만들어 접착한다."
   },
   {
-    id: 704,
+    id: 7004,
     subject: "제7편 가구 조립 작업",
     question: "가공 재료에 가는 실금이 생겼을 때 어떤 눈메움 재료를 사용하면 좋은가?",
     image: "",
@@ -49,7 +49,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "가공 재료에 가는 실금이 생겼을 때는 접착제를 사용한다."
   },
   {
-    id: 705,
+    id: 7005,
     subject: "제7편 가구 조립 작업",
     question: "마구리면에 판재를 대고 못을 박으려고 한다. 못의 길이는 판재 두께의 몇 배 정도가 좋은가?",
     image: "",
@@ -58,7 +58,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "못의 길이는 보통 나무 두께의 2.5~3배가 좋고, 마구리면에 박을 때는 3~3.5배가 되어야 한다."
   },
   {
-    id: 706,
+    id: 7006,
     subject: "제7편 가구 조립 작업",
     question: "못을 박을 때 지지력에 영향을 주는 요인이 아닌 것은?",
     image: "",
@@ -67,7 +67,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "지지력은 목재의 함수율, 못의 길이, 굵기 등에 영향을 받으며 못머리의 형태는 해당하지 않는다."
   },
   {
-    id: 707,
+    id: 7007,
     subject: "제7편 가구 조립 작업",
     question: "오동나무 장롱 등 특별한 제품을 제작할 때 접합하는 가장 좋은 방법은?",
     image: "",
@@ -81,7 +81,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "오동나무와 같은 무른 나무로 제품을 만들 때는 나무못이나 대못(큰 못)을 사용한다."
   },
   {
-    id: 708,
+    id: 7008,
     subject: "제7편 가구 조립 작업",
     question: "오동나무 판재 2개를 직각으로 고정시키는 방법으로 가장 이상적인 것은?",
     image: "",
@@ -95,7 +95,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "오동나무는 무른 나무이므로 접착제를 바르고 대나무 못을 치는 것이 가장 이상적이다."
   },
   {
-    id: 709,
+    id: 7009,
     subject: "제7편 가구 조립 작업",
     question: "나무못 박기에 관한 내용 중 잘못된 것은?",
     image: "",
@@ -109,7 +109,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "나무못의 굵기를 구멍보다 1.5배 이상 크게 하면 안 된다(약간 크게 한다)."
   },
   {
-    id: 710,
+    id: 7010,
     subject: "제7편 가구 조립 작업",
     question: "나무못으로 가장 부적당한 재료는?",
     image: "",
@@ -118,7 +118,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "나무못은 버드나무, 물참나무, 전나무, 대나무 등으로 만들며 미송은 부적당하다."
   },
   {
-    id: 711,
+    id: 7011,
     subject: "제7편 가구 조립 작업",
     question: "나사못으로 접합하는 방법을 나타내는 설명 중 틀린 것은?",
     image: "",
@@ -132,7 +132,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "예비 구멍은 지름이 나사못 지름의 1/2~1/3 정도, 깊이가 나사못 길이의 2/3 정도가 되도록 뚫는다."
   },
   {
-    id: 712,
+    id: 7012,
     subject: "제7편 가구 조립 작업",
     question: "다음 못박기 중 가장 이상적인 것은?",
     image: "images/p7/p7-12.png",
@@ -141,7 +141,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "지그재그·경사 등을 고려한 ①번 못박기가 가장 이상적이다."
   },
   {
-    id: 713,
+    id: 7013,
     subject: "제7편 가구 조립 작업",
     question: "나사못에 의한 접합 기법을 설명한 것으로 옳지 않은 것은?",
     image: "",
@@ -155,7 +155,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "나사못은 예비 구멍을 뚫은 후 조여야 하며, 예비 구멍 없이 조이면 안 된다."
   },
   {
-    id: 714,
+    id: 7014,
     subject: "제7편 가구 조립 작업",
     question: "다음 중 나사못 박기에 대한 설명으로 틀린 것은?",
     image: "",
@@ -169,7 +169,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "제품 표면에 조립 흔적이 보이므로 마구리면이나 무른 나무에는 적합하지 않다."
   },
   {
-    id: 715,
+    id: 7015,
     subject: "제7편 가구 조립 작업",
     question: "일반적으로 못의 길이는 사용되는 나무판 두께의 몇 배가 표준인가?",
     image: "",
@@ -178,7 +178,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "못의 길이는 박는 나무 두께의 2.5~3배가 표준이다."
   },
   {
-    id: 716,
+    id: 7016,
     subject: "제7편 가구 조립 작업",
     question: "나사못 1그로스(gross)는 몇 개인가?",
     image: "",
@@ -187,7 +187,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "1그로스는 144개(12다스)이다."
   },
   {
-    id: 717,
+    id: 7017,
     subject: "제7편 가구 조립 작업",
     question: "습기와 접촉되는 곳에서는 방습성이 좋은 나사못을 사용하는 것이 좋다. 다음 중 어느 못이 가장 적당한가?",
     image: "",
@@ -196,7 +196,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "황동(놋쇠)은 내부식성이 있어 습기와 접촉되는 곳에 적당하다."
   },
   {
-    id: 718,
+    id: 7018,
     subject: "제7편 가구 조립 작업",
     question: "나사못은 둥근못보다 몇 배 정도의 지지력을 가지는가?",
     image: "",
@@ -205,7 +205,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "나사못의 지지력은 둥근못의 약 2배이다."
   },
   {
-    id: 719,
+    id: 7019,
     subject: "제7편 가구 조립 작업",
     question: "목재에 못박기를 할 때 마찰력이 가장 큰 못은?",
     image: "",
@@ -214,7 +214,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "가시못은 겉면에 가시를 붙여 마찰력(지지력)을 크게 한 못이다."
   },
   {
-    id: 720,
+    id: 7020,
     subject: "제7편 가구 조립 작업",
     question: "볼트의 장착과 분리가 자유롭고 접합력이 우수하며, 접합 각도가 90~180°까지 가능한 연결 철물은?",
     image: "",
@@ -223,7 +223,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "마이타 조인트는 원하는 각도(90~180°)를 얻을 수 있어 디자인이 다양하다."
   },
   {
-    id: 721,
+    id: 7021,
     subject: "제7편 가구 조립 작업",
     question: "부재를 연결하는 라픽스의 종류가 아닌 것은?",
     image: "",
@@ -232,7 +232,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "라픽스는 스크루형, 너트형, 꽃임촉형, 볼트 너트형, 관통 너트형이 있다."
   },
   {
-    id: 722,
+    id: 7022,
     subject: "제7편 가구 조립 작업",
     question: "연결 철물 라픽스의 특징 중 옳지 않은 것은?",
     image: "",
@@ -246,7 +246,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "라픽스는 외관상 연결 부위가 보이는 편이며, 강한 구심력으로 접합력이 우수하고 조립·해체가 간편하다."
   },
   {
-    id: 723,
+    id: 7023,
     subject: "제7편 가구 조립 작업",
     question: "조립과 해체가 용이하며 접합력이 우수하고 대량 생산 체제에 적합한 연결 철물은?",
     image: "",
@@ -255,7 +255,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "미니픽스는 부재간 90°로 연결되며 견고하고 대량 생산 체제에 적합하다."
   },
   {
-    id: 724,
+    id: 7024,
     subject: "제7편 가구 조립 작업",
     question: "나비 형태이며, 몸체가 하나로 되어 있어 문짝과 측판에 고정하여 쓰는 경첩은?",
     image: "",
@@ -264,7 +264,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "나비 경첩은 나비 모양의 경첩으로, 일반적으로 가장 많이 사용한다."
   },
   {
-    id: 725,
+    id: 7025,
     subject: "제7편 가구 조립 작업",
     question: "다음 중 나비 경첩을 부착하기 위해 사용하는 기계는?",
     image: "",
@@ -273,7 +273,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "우드밀링은 문짝·측판에 철물 홈을 내거나 홈 가공을 하는 기계이다."
   },
   {
-    id: 726,
+    id: 7026,
     subject: "제7편 가구 조립 작업",
     question: "다음 그림에서 경첩의 크기를 나타내는 것은 어느 것인가?",
     image: "images/p7/p7-26.png",
@@ -282,7 +282,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "경첩의 크기는 자재판의 길이로 나타내며, 그림에서 B에 해당한다."
   },
   {
-    id: 727,
+    id: 7027,
     subject: "제7편 가구 조립 작업",
     question: "경첩 달기에 관한 설명 중 틀린 것은?",
     image: "",
@@ -296,7 +296,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "경첩자리 홈을 너무 깊이 파면 문이 잘 닫히지 않고, 너무 얕게 파면 문을 닫았을 때 사이가 뜬다."
   },
   {
-    id: 728,
+    id: 7028,
     subject: "제7편 가구 조립 작업",
     question: "하나의 경첩으로 양 방향에서 문짝을 개폐할 수 있도록 고안된 경첩은?",
     image: "",
@@ -305,7 +305,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "크랭크 경첩은 측판에 고정한 축과 뒷면 축에 연결된 플레이트로 문짝을 양 방향 개폐한다."
   },
   {
-    id: 729,
+    id: 7029,
     subject: "제7편 가구 조립 작업",
     question: "경첩의 크기를 바르게 표시한 것은?",
     image: "",
@@ -314,7 +314,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "경첩의 크기는 높이×너비로 표시한다."
   },
   {
-    id: 730,
+    id: 7030,
     subject: "제7편 가구 조립 작업",
     question: "두 개의 경첩이 서로 맞물려 있는 형태로, 각도가 있는 문짝을 개폐할 때 사용하는 경첩은?",
     image: "",
@@ -323,7 +323,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "마이타 경첩은 두 경첩이 맞물려 각도가 있는 문짝 개폐에 사용한다."
   },
   {
-    id: 731,
+    id: 7031,
     subject: "제7편 가구 조립 작업",
     question: "양여닫이 장롱 문짝에 쓰이는 철물로 알맞지 않은 것은?",
     image: "",
@@ -332,7 +332,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "양여닫이 문짝에는 경첩, 오르내리 꽂이쇠, 물림쇠 등을 쓰며 면붙임 자물쇠는 알맞지 않다."
   },
   {
-    id: 732,
+    id: 7032,
     subject: "제7편 가구 조립 작업",
     question: "장식장이나 서랍장, 간이 테이블 연결 등 주로 접힌 부분을 평형하게 펴는 데 주로 사용하는 경첩은?",
     image: "",
@@ -341,7 +341,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "플랩 경첩은 콘솔·장식장·서랍장·간이 테이블 등 접힌 부분을 평형하게 펴는 데 사용한다."
   },
   {
-    id: 733,
+    id: 7033,
     subject: "제7편 가구 조립 작업",
     question: "본체의 세로 판과 서랍의 측면에 부착하여 서랍의 개폐용으로 사용하는 가구 부자재는?",
     image: "",
@@ -350,7 +350,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "서랍 러너는 본체 세로 판과 서랍 측면에 부착하여 서랍 개폐에 사용한다."
   },
   {
-    id: 734,
+    id: 7034,
     subject: "제7편 가구 조립 작업",
     question: "유리문 경첩에 대한 설명이 아닌 것은?",
     image: "",
@@ -364,7 +364,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "각도 조절용 유리문 경첩은 최대 92°까지 열리며, 유리 두께는 4~6mm 이내를 장착할 수 있다."
   },
   {
-    id: 735,
+    id: 7035,
     subject: "제7편 가구 조립 작업",
     question: "가정용 가구의 재료에 대한 설명 중 틀린 것은?",
     image: "",
@@ -378,7 +378,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "가정용 가구에 주로 사용되는 목재는 침엽수재보다는 활엽수재가 많다."
   },
   {
-    id: 736,
+    id: 7036,
     subject: "제7편 가구 조립 작업",
     question: "가정용 가구의 부자재 요구 조건으로 알맞지 않은 것은?",
     image: "",
@@ -392,7 +392,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "수납 증대를 위해 회전식 철물이어야 하며, 고정식 철물은 요구 조건이 아니다."
   },
   {
-    id: 737,
+    id: 7037,
     subject: "제7편 가구 조립 작업",
     question: "가정용 가구 재료 중 부자재에 대한 설명으로 옳은 것은?",
     image: "",
@@ -406,7 +406,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "대표적인 부자재로는 경첩, 러너, 손잡이, 연결 철물 등이 있다."
   },
   {
-    id: 738,
+    id: 7038,
     subject: "제7편 가구 조립 작업",
     question: "가정용 가구 재료 중 부자재에 대한 설명으로 틀린 것은?",
     image: "",
@@ -420,7 +420,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "책장이나 장식장과 같이 선반과 본체의 연결에는 라픽스를 사용한다."
   },
   {
-    id: 739,
+    id: 7039,
     subject: "제7편 가구 조립 작업",
     question: "부엌용 가구 구성에 대한 특징으로 옳지 않은 것은?",
     image: "",
@@ -434,7 +434,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "부엌용 가구는 디자인보다 효율성과 합리성이 강조된다."
   },
   {
-    id: 740,
+    id: 7040,
     subject: "제7편 가구 조립 작업",
     question: "의자를 구성하는 부재가 아닌 것은?",
     image: "",
@@ -443,7 +443,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "천판은 책상·상자·장롱 등의 윗면에 대는 널빤지로, 의자 구성 부재가 아니다."
   },
   {
-    id: 741,
+    id: 7041,
     subject: "제7편 가구 조립 작업",
     question: "책상의 부분 명칭과 제작 방법에 대한 설명으로 틀린 것은?",
     image: "",
@@ -457,7 +457,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "막판은 다리와 장부맞춤한다."
   },
   {
-    id: 742,
+    id: 7042,
     subject: "제7편 가구 조립 작업",
     question: "다음 중 장류 가구의 몸통 부분의 명칭으로 옳은 것은?",
     image: "",
@@ -471,7 +471,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "천판은 가구의 윗판, 지판은 밑판, 선반은 내부를 가로로 나누는 판이며, 중간판은 내부를 세로로 나누는 판이다."
   },
   {
-    id: 743,
+    id: 7043,
     subject: "제7편 가구 조립 작업",
     question: "하나의 측판에 2개의 도어를 설치할 때 사용하는 도어의 형태는?",
     image: "",
@@ -480,7 +480,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "반덧방형(하프 오버레이형)은 하나의 측판에 양쪽으로 2개의 도어를 설치할 때 사용한다."
   },
   {
-    id: 744,
+    id: 7044,
     subject: "제7편 가구 조립 작업",
     question: "부엌 가구장에서 높이가 2m 이상 되는 가구를 일컫는 명칭은?",
     image: "",
@@ -489,7 +489,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "높은장은 높이가 2m 이상 되는 가구를 말한다."
   },
   {
-    id: 745,
+    id: 7045,
     subject: "제7편 가구 조립 작업",
     question: "문이 달린 책장을 설계할 때 특히 유의해야 할 사항은?",
     image: "",
@@ -498,7 +498,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "책장을 설계할 때는 책의 높이, 선반의 두께와 수를 고려한다."
   },
   {
-    id: 746,
+    id: 7046,
     subject: "제7편 가구 조립 작업",
     question: "신발장을 설계할 때 잘못된 설명은?",
     image: "",
@@ -512,7 +512,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "면적을 적게 차지하려면 여닫이문보다 옆으로 밀어 여는 미닫이문이 좋다."
   },
   {
-    id: 747,
+    id: 7047,
     subject: "제7편 가구 조립 작업",
     question: "합판에 의한 가구 제작 방법 중 눈높이보다 낮은 크기의 가구 제작에 많이 사용되는 형태는?",
     image: "",
@@ -521,7 +521,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "덧방형은 세로형에 천판을 한번 더 덧댄 구조로, 눈높이보다 낮은 가구 제작에 많이 쓰인다."
   },
   {
-    id: 748,
+    id: 7048,
     subject: "제7편 가구 조립 작업",
     question: "합판을 사용하여 가구를 제작할 때 옷장과 같은 가구 몸통 제작에 주로 많이 사용하는 형태는?",
     image: "",
@@ -530,7 +530,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "세로형은 천판·지판·선반이 측판 안에 연결되는 구조로, 옷장 같은 몸통 제작에 주로 쓰인다."
   },
   {
-    id: 749,
+    id: 7049,
     subject: "제7편 가구 조립 작업",
     question: "다음 중 원목 가구의 제작 방법으로 알맞지 않은 것은?",
     image: "",
@@ -539,7 +539,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "원목 가구 제작 방법에는 주먹장부형, 연귀맞춤형, 상부 연귀맞춤형, 혼합형 등이 있으며 반덧방형은 해당하지 않는다."
   },
   {
-    id: 750,
+    id: 7050,
     subject: "제7편 가구 조립 작업",
     question: "다음 중 가구 제작 방법에 대한 설명으로 옳은 것은?",
     image: "",
@@ -553,7 +553,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "신발장 깊이는 신발 길이보다 여유있게, 책장은 책과 윗선반 간격을 15mm 정도 더하며, 서랍 바닥은 5mm 합판을 주로 쓴다."
   },
   {
-    id: 751,
+    id: 7051,
     subject: "제7편 가구 조립 작업",
     question: "서랍의 뒷널을 옆널과 가장 튼튼히 접합하는 방법으로 좋은 것은?",
     image: "",
@@ -567,7 +567,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "주먹장맞춤을 하고 바닥판과 뒷널을 나사못으로 조이는 방법이 가장 튼튼하다."
   },
   {
-    id: 752,
+    id: 7052,
     subject: "제7편 가구 조립 작업",
     question: "서랍을 끝까지 열었을 때 서랍의 탈락을 방지하기 위한 기능을 하는 것은?",
     image: "",
@@ -576,7 +576,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "스토퍼 장치는 서랍을 끝까지 열었을 때 탈락을 방지한다."
   },
   {
-    id: 753,
+    id: 7053,
     subject: "제7편 가구 조립 작업",
     question: "상자나 서랍을 제작할 때 나뭇결을 어떻게 사용하는 것이 가장 좋은가?",
     image: "",
@@ -590,7 +590,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "수심 쪽이 밖으로 나오도록 사용하는 것이 변형이 적어 가장 좋다."
   },
   {
-    id: 754,
+    id: 7054,
     subject: "제7편 가구 조립 작업",
     question: "가구의 다리와 몸체의 조립 방법 중 옳지 않은 것은?",
     image: "",
@@ -604,7 +604,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "다리와 몸체는 접착제, 꽃임촉, 나사못·못 등으로 조립하며, 이음은 길이 방향 연결이라 해당하지 않는다."
   },
   {
-    id: 755,
+    id: 7055,
     subject: "제7편 가구 조립 작업",
     question: "다음의 가구 문짝에서 양판(A)을 넣고 조립할 때의 설명 중 옳은 것은?",
     image: "images/p7/p7-55.png",
@@ -618,7 +618,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "양판은 신축에 대비해 홈에 접착제를 바르지 않고 움직임이 있도록 끼운다."
   },
   {
-    id: 756,
+    id: 7056,
     subject: "제7편 가구 조립 작업",
     question: "다음 중 가구의 문을 맞추는 순서를 바르게 나타낸 것은?",
     image: "",
@@ -632,7 +632,7 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     explanation: "문 맞추는 순서는 문의 밑부분 - 경첩이 달리는 쪽 - 윗부분 - 손잡이가 달리는 쪽이다."
   },
   {
-    id: 757,
+    id: 7057,
     subject: "제7편 가구 조립 작업",
     question: "가구 제작에서 조립 후 바로 확인하지 않아도 되는 것은?",
     image: "",
