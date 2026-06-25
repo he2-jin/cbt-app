@@ -459,6 +459,8 @@ function renderWrongPracticeQuestion(index) {
       wrongPracticeState.answered[q.id] = i + 1;
       const isCorrect = (i + 1 === q.answer);
 
+      if (!isCorrect) addToWrongAnswers([q.id]);
+
       opts.querySelectorAll('.option-btn').forEach((b, bi) => {
         b.disabled = true;
         if (bi + 1 === q.answer) b.classList.add('correct');
