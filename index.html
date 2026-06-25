@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가구제작기능사 CBT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 비밀번호 입력 화면 -->
+  <div id="screen-password" class="screen active">
+    <div class="center-box">
+      <h1>🪑 가구제작기능사 CBT</h1>
+      <div class="password-box">
+        <input type="password" id="password-input" placeholder="비밀번호를 입력하세요" maxlength="20">
+        <button id="password-btn">확인</button>
+      </div>
+      <p id="password-error" class="error hidden">비밀번호가 틀렸습니다.</p>
+    </div>
+  </div>
+
+  <!-- 홈 화면 -->
+  <div id="screen-home" class="screen">
+    <div class="home-container">
+      <h1>🪑 가구제작기능사 CBT</h1>
+      <p class="subtitle">총 <span id="total-count">0</span>문항 | 오답 <span id="wrong-count">0</span>문항</p>
+      <div class="menu-grid">
+        <button id="btn-exam" class="menu-btn">
+          <span class="menu-icon">📝</span>
+          <span class="menu-title">실전모드</span>
+          <span class="menu-sub">60문항 / 60분</span>
+        </button>
+        <button id="btn-practice" class="menu-btn">
+          <span class="menu-icon">📚</span>
+          <span class="menu-title">과목별 연습</span>
+          <span class="menu-sub">즉시 채점</span>
+        </button>
+        <button id="btn-wrong" class="menu-btn">
+          <span class="menu-icon">❌</span>
+          <span class="menu-title">오답노트</span>
+          <span class="menu-sub"><span id="wrong-count-home">0</span>문항</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 실전모드 화면 -->
+  <div id="screen-exam" class="screen">
+    <div class="exam-header">
+      <button id="exam-home-btn" class="back-btn">홈</button>
+      <span id="exam-progress" class="progress-text">1 / 60</span>
+      <span id="exam-timer" class="timer">60:00</span>
+    </div>
+    <div id="question-nav" class="question-nav"></div>
+    <div class="question-area">
+      <div class="question-meta">
+        <span id="exam-subject" class="subject-badge"></span>
+        <span id="exam-number" class="question-number"></span>
+      </div>
+      <p id="exam-question" class="question-text"></p>
+      <img id="exam-image" class="question-image hidden" src="" alt="문제 이미지">
+      <div id="exam-options" class="options"></div>
+    </div>
+    <div class="exam-footer">
+      <button id="exam-prev-btn" class="nav-btn">◀ 이전</button>
+      <button id="exam-next-btn" class="nav-btn">다음 ▶</button>
+      <button id="exam-submit-btn" class="submit-btn">제출하기</button>
+    </div>
+  </div>
+
+  <!-- 실전모드 결과 화면 -->
+  <div id="screen-exam-result" class="screen">
+    <div class="result-container">
+      <h2>시험 결과</h2>
+      <div class="score-box">
+        <div id="result-score" class="score-number">0점</div>
+        <div id="result-pass" class="pass-badge">불합격</div>
+      </div>
+      <div id="subject-scores" class="subject-scores"></div>
+      <h3>틀린 문제</h3>
+      <div id="result-wrong-list" class="wrong-list"></div>
+      <div class="result-buttons">
+        <button id="result-add-wrong" class="primary-btn">오답노트에 추가</button>
+        <button id="result-home" class="secondary-btn">홈으로</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 과목 선택 화면 -->
+  <div id="screen-practice-select" class="screen">
+    <div class="center-box">
+      <button class="back-btn" id="practice-select-back">← 홈</button>
+      <h2>과목 선택</h2>
+      <div class="subject-grid">
+        <button class="subject-btn" data-subject="가구제도">
+          가구제도<br><small id="count-가구제도">0문항</small>
+        </button>
+        <button class="subject-btn" data-subject="가구재료">
+          가구재료<br><small id="count-가구재료">0문항</small>
+        </button>
+        <button class="subject-btn" data-subject="가구공작">
+          가구공작<br><small id="count-가구공작">0문항</small>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 과목별 연습 화면 -->
+  <div id="screen-practice" class="screen">
+    <div class="exam-header">
+      <button class="back-btn" id="practice-back">← 과목 선택</button>
+      <span id="practice-subject-title" class="subject-badge"></span>
+      <span id="practice-progress" class="progress-text">1 / 0</span>
+    </div>
+    <div class="question-area">
+      <p id="practice-question" class="question-text"></p>
+      <img id="practice-image" class="question-image hidden" src="" alt="문제 이미지">
+      <div id="practice-options" class="options"></div>
+      <div id="practice-feedback" class="feedback hidden"></div>
+      <div id="practice-explanation" class="explanation hidden"></div>
+    </div>
+    <div class="exam-footer">
+      <button id="practice-prev-btn" class="nav-btn">◀ 이전</button>
+      <button id="practice-next-btn" class="nav-btn">다음 ▶</button>
+    </div>
+  </div>
+
+  <!-- 오답노트 화면 -->
+  <div id="screen-wrong-notes" class="screen">
+    <div class="result-container">
+      <button class="back-btn" id="wrong-notes-back">← 홈</button>
+      <h2>오답노트</h2>
+      <p id="wrong-notes-empty" class="empty-message hidden">저장된 오답이 없습니다.</p>
+      <div id="wrong-notes-list" class="wrong-list"></div>
+      <div class="result-buttons">
+        <button id="wrong-notes-practice" class="primary-btn">오답 전체 풀기</button>
+        <button id="wrong-notes-clear" class="danger-btn">오답노트 초기화</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 오답 풀기 화면 -->
+  <div id="screen-wrong-practice" class="screen">
+    <div class="exam-header">
+      <button class="back-btn" id="wrong-practice-back">← 오답노트</button>
+      <span class="subject-badge">오답 풀기</span>
+      <span id="wrong-practice-progress" class="progress-text">1 / 0</span>
+    </div>
+    <div class="question-area">
+      <div class="question-meta">
+        <span id="wrong-practice-subject" class="subject-badge"></span>
+      </div>
+      <p id="wrong-practice-question" class="question-text"></p>
+      <img id="wrong-practice-image" class="question-image hidden" src="" alt="문제 이미지">
+      <div id="wrong-practice-options" class="options"></div>
+      <div id="wrong-practice-feedback" class="feedback hidden"></div>
+      <div id="wrong-practice-explanation" class="explanation hidden"></div>
+    </div>
+    <div class="exam-footer">
+      <button id="wrong-practice-prev-btn" class="nav-btn">◀ 이전</button>
+      <button id="wrong-practice-next-btn" class="nav-btn">다음 ▶</button>
+    </div>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
