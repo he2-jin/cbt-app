@@ -198,6 +198,7 @@ body {
 .wrong-item .q-text { margin-bottom: 0.25rem; }
 .wrong-item .q-answer { font-size: 0.8rem; color: var(--gray-400); }
 .wrong-item .q-answer span { color: var(--danger); }
+.wrong-item .q-explanation { font-size: 0.82rem; color: #1d4ed8; margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px solid var(--gray-200); }
 
 .result-buttons { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
 .primary-btn {

@@ -34,7 +34,7 @@
         <button id="btn-practice" class="menu-btn">
           <span class="menu-icon">📚</span>
           <span class="menu-title">과목별 연습</span>
-          <span class="menu-sub">즉시 채점</span>
+          <span class="menu-sub">풀고 나서 채점</span>
         </button>
         <button id="btn-wrong" class="menu-btn">
           <span class="menu-icon">❌</span>
@@ -129,12 +129,27 @@
       <p id="practice-question" class="question-text"></p>
       <img id="practice-image" class="question-image hidden" src="" alt="문제 이미지">
       <div id="practice-options" class="options"></div>
-      <div id="practice-feedback" class="feedback hidden"></div>
-      <div id="practice-explanation" class="explanation hidden"></div>
     </div>
     <div class="exam-footer">
       <button id="practice-prev-btn" class="nav-btn">◀ 이전</button>
       <button id="practice-next-btn" class="nav-btn">다음 ▶</button>
+      <button id="practice-submit-btn" class="submit-btn hidden">결과 보기</button>
+    </div>
+  </div>
+
+  <!-- 과목별 연습 결과 화면 -->
+  <div id="screen-practice-result" class="screen">
+    <div class="result-container">
+      <h2 id="practice-result-title">연습 결과</h2>
+      <div class="score-box">
+        <div id="practice-result-score" class="score-number"></div>
+      </div>
+      <h3>틀린 문제</h3>
+      <div id="practice-result-wrong-list" class="wrong-list"></div>
+      <div class="result-buttons">
+        <button id="practice-result-add-wrong" class="primary-btn">오답노트에 추가</button>
+        <button id="practice-result-back" class="secondary-btn">과목 선택으로</button>
+      </div>
     </div>
   </div>
 

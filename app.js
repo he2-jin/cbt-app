@@ -270,11 +270,12 @@ function renderExamResult(score, wrongIds, subjectStats) {
       const myAns = examState.answers[id];
       wrongList.innerHTML += `
         <div class="wrong-item">
-          <div class="q-text">${q.question.slice(0, 60)}${q.question.length > 60 ? '...' : ''}</div>
+          <div class="q-text">${q.question}</div>
           <div class="q-answer">
             내 답: <span>${myAns ? myAns + '. ' + q.options[myAns - 1] : '미답'}</span>
             &nbsp;|&nbsp; 정답: ${q.answer}. ${q.options[q.answer - 1]}
           </div>
+          ${q.explanation ? `<div class="q-explanation">💡 ${q.explanation}</div>` : ''}
         </div>`;
     });
   }
@@ -321,11 +322,6 @@ function renderPracticeQuestion(index) {
     img.classList.add('hidden');
   }
 
-  const fb = document.getElementById('practice-feedback');
-  const exp = document.getElementById('practice-explanation');
-  fb.classList.add('hidden');
-  exp.classList.add('hidden');
-
   const opts = document.getElementById('practice-options');
   opts.innerHTML = '';
   const answered = practiceState.answered[q.id];
@@ -335,52 +331,75 @@ function renderPracticeQuestion(index) {
     btn.className = 'option-btn';
     btn.innerHTML = '<span>' + (i + 1) + '.</span> ' + text;
 
-    if (answered !== undefined) {
-      btn.disabled = true;
-      if (i + 1 === q.answer) btn.classList.add('correct');
-      else if (i + 1 === answered) btn.classList.add('wrong');
-    }
+    if (answered === i + 1) btn.classList.add('selected');
 
     btn.addEventListener('click', () => {
       if (practiceState.answered[q.id] !== undefined) return;
       practiceState.answered[q.id] = i + 1;
-      const isCorrect = (i + 1 === q.answer);
-
-      if (!isCorrect) addToWrongAnswers([q.id]);
-
-      opts.querySelectorAll('.option-btn').forEach((b, bi) => {
-        b.disabled = true;
-        if (bi + 1 === q.answer) b.classList.add('correct');
-        else if (bi + 1 === i + 1) b.classList.add('wrong');
-      });
-
-      fb.textContent = isCorrect ? '✅ 정답입니다!' : '❌ 오답입니다.';
-      fb.className = 'feedback ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
-      fb.classList.remove('hidden');
-
-      if (q.explanation) {
-        exp.textContent = '💡 해설: ' + q.explanation;
-        exp.classList.remove('hidden');
-      }
+      renderPracticeQuestion(index);
+      updatePracticeSubmitBtn();
     });
 
     opts.appendChild(btn);
   });
 
-  if (answered !== undefined) {
-    const isCorrect = answered === q.answer;
-    fb.textContent = isCorrect ? '✅ 정답입니다!' : '❌ 오답입니다.';
-    fb.className = 'feedback ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
-    fb.classList.remove('hidden');
-    if (q.explanation) {
-      exp.textContent = '💡 해설: ' + q.explanation;
-      exp.classList.remove('hidden');
-    }
-  }
-
   document.getElementById('practice-prev-btn').disabled = index === 0;
   document.getElementById('practice-next-btn').disabled =
     index === practiceState.questions.length - 1;
+
+  updatePracticeSubmitBtn();
+}
+
+function updatePracticeSubmitBtn() {
+  const allAnswered = practiceState.questions.every(q => practiceState.answered[q.id] !== undefined);
+  document.getElementById('practice-submit-btn').classList.toggle('hidden', !allAnswered);
+}
+
+function submitPractice() {
+  const wrongIds = [];
+  let correct = 0;
+
+  practiceState.questions.forEach(q => {
+    if (practiceState.answered[q.id] === q.answer) {
+      correct += 1;
+    } else {
+      wrongIds.push(q.id);
+    }
+  });
+
+  const score = Math.round((correct / practiceState.questions.length) * 100);
+  renderPracticeResult(score, wrongIds, correct);
+  showScreen('screen-practice-result');
+}
+
+function renderPracticeResult(score, wrongIds, correct) {
+  lastWrongIds = wrongIds;
+
+  document.getElementById('practice-result-title').textContent = practiceState.subject + ' 결과';
+  document.getElementById('practice-result-score').textContent =
+    score + '점 (' + correct + '/' + practiceState.questions.length + ')';
+
+  const wrongList = document.getElementById('practice-result-wrong-list');
+  wrongList.innerHTML = '';
+  if (wrongIds.length === 0) {
+    wrongList.innerHTML = '<p style="color:#16a34a">전부 정답!</p>';
+  } else {
+    wrongIds.forEach(id => {
+      const q = QUESTIONS.find(q => q.id === id);
+      const myAns = practiceState.answered[id];
+      wrongList.innerHTML += `
+        <div class="wrong-item">
+          <div class="q-text">${q.question}</div>
+          <div class="q-answer">
+            내 답: <span>${myAns ? myAns + '. ' + q.options[myAns - 1] : '미답'}</span>
+            &nbsp;|&nbsp; 정답: ${q.answer}. ${q.options[q.answer - 1]}
+          </div>
+          ${q.explanation ? `<div class="q-explanation">💡 ${q.explanation}</div>` : ''}
+        </div>`;
+    });
+  }
+
+  document.getElementById('practice-result-add-wrong').disabled = wrongIds.length === 0;
 }
 
 function movePracticeQuestion(dir) {
@@ -578,6 +597,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   document.getElementById('practice-prev-btn').addEventListener('click', () => movePracticeQuestion(-1));
   document.getElementById('practice-next-btn').addEventListener('click', () => movePracticeQuestion(1));
+  document.getElementById('practice-submit-btn').addEventListener('click', submitPractice);
+
+  // 연습 결과
+  document.getElementById('practice-result-add-wrong').addEventListener('click', () => {
+    addToWrongAnswers(lastWrongIds);
+    document.getElementById('practice-result-add-wrong').disabled = true;
+    alert('오답노트에 추가되었습니다.');
+  });
+  document.getElementById('practice-result-back').addEventListener('click', () => {
+    renderPracticeSelect(); showScreen('screen-practice-select');
+  });
 
   // 오답노트
   document.getElementById('wrong-notes-back').addEventListener('click', () => { renderHome(); showScreen('screen-home'); });
