@@ -267,11 +267,110 @@ function addResultToWrong() {
   alert('오답노트에 추가되었습니다.');
 }
 
-// ===== 과목별 연습모드 (Task 5에서 구현) =====
-function renderPracticeSelect() {}
-function startPractice(subject) {}
-function renderPracticeQuestion(index) {}
-function movePracticeQuestion(dir) {}
+// ===== 과목별 연습모드 =====
+function renderPracticeSelect() {
+  const subjects = ['가구제도', '가구재료', '가구공작'];
+  subjects.forEach(s => {
+    const el = document.getElementById('count-' + s);
+    if (el) el.textContent = QUESTIONS.filter(q => q.subject === s).length + '문항';
+  });
+}
+
+function startPractice(subject) {
+  practiceState.subject = subject;
+  practiceState.questions = QUESTIONS.filter(q => q.subject === subject);
+  practiceState.currentIndex = 0;
+  practiceState.answered = {};
+
+  document.getElementById('practice-subject-title').textContent = subject;
+  renderPracticeQuestion(0);
+  showScreen('screen-practice');
+}
+
+function renderPracticeQuestion(index) {
+  const q = practiceState.questions[index];
+  practiceState.currentIndex = index;
+
+  document.getElementById('practice-question').textContent = q.question;
+  document.getElementById('practice-progress').textContent =
+    (index + 1) + ' / ' + practiceState.questions.length;
+
+  const img = document.getElementById('practice-image');
+  if (q.image) {
+    img.src = q.image;
+    img.classList.remove('hidden');
+  } else {
+    img.classList.add('hidden');
+  }
+
+  const fb = document.getElementById('practice-feedback');
+  const exp = document.getElementById('practice-explanation');
+  fb.classList.add('hidden');
+  exp.classList.add('hidden');
+
+  const opts = document.getElementById('practice-options');
+  opts.innerHTML = '';
+  const answered = practiceState.answered[q.id];
+
+  q.options.forEach((text, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = '<span>' + (i + 1) + '.</span> ' + text;
+
+    if (answered !== undefined) {
+      btn.disabled = true;
+      if (i + 1 === q.answer) btn.classList.add('correct');
+      else if (i + 1 === answered) btn.classList.add('wrong');
+    }
+
+    btn.addEventListener('click', () => {
+      if (practiceState.answered[q.id] !== undefined) return;
+      practiceState.answered[q.id] = i + 1;
+      const isCorrect = (i + 1 === q.answer);
+
+      if (!isCorrect) addToWrongAnswers([q.id]);
+
+      opts.querySelectorAll('.option-btn').forEach((b, bi) => {
+        b.disabled = true;
+        if (bi + 1 === q.answer) b.classList.add('correct');
+        else if (bi + 1 === i + 1) b.classList.add('wrong');
+      });
+
+      fb.textContent = isCorrect ? '✅ 정답입니다!' : '❌ 오답입니다.';
+      fb.className = 'feedback ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+      fb.classList.remove('hidden');
+
+      if (q.explanation) {
+        exp.textContent = '💡 해설: ' + q.explanation;
+        exp.classList.remove('hidden');
+      }
+    });
+
+    opts.appendChild(btn);
+  });
+
+  if (answered !== undefined) {
+    const isCorrect = answered === q.answer;
+    fb.textContent = isCorrect ? '✅ 정답입니다!' : '❌ 오답입니다.';
+    fb.className = 'feedback ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+    fb.classList.remove('hidden');
+    if (q.explanation) {
+      exp.textContent = '💡 해설: ' + q.explanation;
+      exp.classList.remove('hidden');
+    }
+  }
+
+  document.getElementById('practice-prev-btn').disabled = index === 0;
+  document.getElementById('practice-next-btn').disabled =
+    index === practiceState.questions.length - 1;
+}
+
+function movePracticeQuestion(dir) {
+  const next = practiceState.currentIndex + dir;
+  if (next >= 0 && next < practiceState.questions.length) {
+    renderPracticeQuestion(next);
+  }
+}
 
 // ===== 오답노트 (Task 6에서 구현) =====
 function renderWrongNotes() {}
