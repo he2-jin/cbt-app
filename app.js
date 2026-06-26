@@ -25,6 +25,12 @@ let wrongPracticeState = {
   answered: {},
 };
 
+let mockPracticeState = {
+  questions: [],
+  currentIndex: 0,
+  answered: {},
+};
+
 let lastWrongIds = [];
 
 // ===== 화면 전환 =====
@@ -547,6 +553,115 @@ function moveWrongPracticeQuestion(dir) {
   }
 }
 
+// ===== 실전문제 =====
+function startMockPractice() {
+  mockPracticeState.questions = [...(window.MOCK_QUESTIONS || [])];
+  mockPracticeState.currentIndex = 0;
+  mockPracticeState.answered = {};
+
+  if (mockPracticeState.questions.length === 0) {
+    alert('등록된 실전문제가 없습니다.');
+    return;
+  }
+
+  renderMockPracticeQuestion(0);
+  showScreen('screen-mock-practice');
+}
+
+function renderMockPracticeQuestion(index) {
+  const q = mockPracticeState.questions[index];
+  mockPracticeState.currentIndex = index;
+
+  document.getElementById('mock-practice-subject').textContent = q.subject;
+  document.getElementById('mock-practice-question').textContent = q.question;
+  document.getElementById('mock-practice-progress').textContent =
+    (index + 1) + ' / ' + mockPracticeState.questions.length;
+
+  const img = document.getElementById('mock-practice-image');
+  if (q.image) {
+    img.src = q.image;
+    img.classList.remove('hidden');
+  } else {
+    img.classList.add('hidden');
+  }
+
+  const fb = document.getElementById('mock-practice-feedback');
+  const exp = document.getElementById('mock-practice-explanation');
+  fb.classList.add('hidden');
+  exp.classList.add('hidden');
+
+  const opts = document.getElementById('mock-practice-options');
+  opts.innerHTML = '';
+  const answered = mockPracticeState.answered[q.id];
+
+  q.options.forEach((text, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = '<span>' + (i + 1) + '.</span> ' + text;
+
+    if (answered !== undefined) {
+      btn.disabled = true;
+      if (i + 1 === q.answer) btn.classList.add('correct');
+      else if (i + 1 === answered) btn.classList.add('wrong');
+    }
+
+    btn.addEventListener('click', () => {
+      if (mockPracticeState.answered[q.id] !== undefined) return;
+      mockPracticeState.answered[q.id] = i + 1;
+      const isCorrect = (i + 1 === q.answer);
+
+      opts.querySelectorAll('.option-btn').forEach((b, bi) => {
+        b.disabled = true;
+        if (bi + 1 === q.answer) b.classList.add('correct');
+        else if (bi + 1 === i + 1) b.classList.add('wrong');
+      });
+
+      renderMockFeedback(q, i + 1, isCorrect);
+    });
+
+    opts.appendChild(btn);
+  });
+
+  if (answered !== undefined) {
+    renderMockFeedback(q, answered, answered === q.answer);
+  }
+
+  document.getElementById('mock-practice-prev-btn').disabled = index === 0;
+  document.getElementById('mock-practice-next-btn').disabled =
+    index === mockPracticeState.questions.length - 1;
+}
+
+function renderMockFeedback(q, selected, isCorrect) {
+  const fb = document.getElementById('mock-practice-feedback');
+  const exp = document.getElementById('mock-practice-explanation');
+  const isNegativeQuestion = /틀린|아닌|않은|알맞지|잘못|해당하지/.test(q.question);
+  const answerText = q.answer + '. ' + q.options[q.answer - 1];
+  const selectedText = selected + '. ' + q.options[selected - 1];
+  const explanation = q.explanation || '선택한 보기와 정답 조건이 다릅니다.';
+
+  fb.textContent = isCorrect ? '정답입니다.' : '오답입니다.';
+  fb.className = 'feedback ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+  fb.classList.remove('hidden');
+
+  if (isCorrect) {
+    exp.textContent = isNegativeQuestion
+      ? '정답: ' + answerText + ' / 체크: 이 문제는 틀린 보기나 해당하지 않는 보기를 고르는 문제입니다. 정답 보기가 틀린 이유: ' + explanation
+      : '정답: ' + answerText + ' / 핵심: ' + explanation;
+  } else {
+    exp.textContent = isNegativeQuestion
+      ? '내 답: ' + selectedText + ' / 정답: ' + answerText + ' / 체크: 이 문제는 틀린 보기나 해당하지 않는 보기를 고르는 문제입니다. 정답 보기가 틀린 이유: ' + explanation
+      : '내 답: ' + selectedText + ' / 정답: ' + answerText + ' / 이유: ' + explanation;
+  }
+  exp.classList.remove('hidden');
+}
+
+function moveMockPracticeQuestion(dir) {
+  const next = mockPracticeState.currentIndex + dir;
+  if (next >= 0 && next < mockPracticeState.questions.length) {
+    renderMockPracticeQuestion(next);
+  }
+}
+
 function clearWrongNotes() {
   if (!confirm('오답노트를 전부 초기화할까요?')) return;
   localStorage.removeItem(STORAGE_KEY);
@@ -574,6 +689,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderWrongNotes();
     showScreen('screen-wrong-notes');
   });
+  document.getElementById('btn-mock').addEventListener('click', startMockPractice);
 
   // 과목 선택
   document.querySelectorAll('.subject-btn').forEach(btn => {
@@ -625,4 +741,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('wrong-practice-back').addEventListener('click', () => { renderWrongNotes(); showScreen('screen-wrong-notes'); });
   document.getElementById('wrong-practice-prev-btn').addEventListener('click', () => moveWrongPracticeQuestion(-1));
   document.getElementById('wrong-practice-next-btn').addEventListener('click', () => moveWrongPracticeQuestion(1));
+
+  // 실전문제
+  document.getElementById('mock-practice-back').addEventListener('click', () => { renderHome(); showScreen('screen-home'); });
+  document.getElementById('mock-practice-prev-btn').addEventListener('click', () => moveMockPracticeQuestion(-1));
+  document.getElementById('mock-practice-next-btn').addEventListener('click', () => moveMockPracticeQuestion(1));
 });

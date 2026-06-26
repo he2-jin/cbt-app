@@ -41,6 +41,11 @@
           <span class="menu-title">오답노트</span>
           <span class="menu-sub"><span id="wrong-count-home">0</span>문항</span>
         </button>
+        <button id="btn-mock" class="menu-btn">
+          <span class="menu-icon">🎯</span>
+          <span class="menu-title">실전문제</span>
+          <span class="menu-sub">풀면 바로 확인</span>
+        </button>
       </div>
     </div>
   </div>
@@ -190,6 +195,30 @@
     </div>
   </div>
 
+  <!-- 실전문제 화면 -->
+  <div id="screen-mock-practice" class="screen">
+    <div class="exam-header">
+      <button class="back-btn" id="mock-practice-back">← 홈</button>
+      <span class="subject-badge">실전문제</span>
+      <span id="mock-practice-progress" class="progress-text">1 / 0</span>
+    </div>
+    <div class="question-area">
+      <div class="question-meta">
+        <span id="mock-practice-subject" class="subject-badge"></span>
+      </div>
+      <p id="mock-practice-question" class="question-text"></p>
+      <img id="mock-practice-image" class="question-image hidden" src="" alt="문제 이미지">
+      <div id="mock-practice-options" class="options"></div>
+      <div id="mock-practice-feedback" class="feedback hidden"></div>
+      <div id="mock-practice-explanation" class="explanation hidden"></div>
+    </div>
+    <div class="exam-footer">
+      <button id="mock-practice-prev-btn" class="nav-btn">◀ 이전</button>
+      <button id="mock-practice-next-btn" class="nav-btn">다음 ▶</button>
+    </div>
+  </div>
+
+  <script src="questions/mock1.js?v=20260627"></script>
   <script src="questions/p1.js?v=20260626"></script>
   <script src="questions/p2.js?v=20260626"></script>
   <script src="questions/p3.js?v=20260626"></script>
@@ -197,6 +226,6 @@
   <script src="questions/p5.js?v=20260626"></script>
   <script src="questions/p6.js?v=20260626"></script>
   <script src="questions/p7.js?v=20260626"></script>
-  <script src="app.js?v=20260626b"></script>
+  <script src="app.js?v=20260627"></script>
 </body>
 </html>
