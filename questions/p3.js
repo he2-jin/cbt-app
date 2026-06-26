@@ -1,7 +1,6 @@
 // questions/p3.js — 제3편 목재 가공
 // id 규칙: 30xx (3001 = 제3편 1번 ... 3105 = 제3편 105번)
 // 이미지: images/p3/ 폴더
-// 비어있는 id: 3021 (면 가공기계 1번 - 수압대패 조정 순서, 보기 미입력)
 window.QUESTIONS = (window.QUESTIONS || []).concat([
   {
     id: 3001,
@@ -227,6 +226,15 @@ window.QUESTIONS = (window.QUESTIONS || []).concat([
     ],
     answer: 3,
     explanation: "보링 가공은 조립을 위한 공정으로, 설계 치수에 대해 정확하고 정밀한 작업이 요구된다."
+  },
+  {
+    id: 3021,
+    subject: "제3편 목재 가공",
+    question: "수압대패의 조정 순서로 옳은 것은?",
+    image: "images/p3/p3-21.png",
+    options: ["①번", "②번", "③번", "④번"],
+    answer: 1,
+    explanation: "수압대패 조정 순서는 뒤테이블 조정 → 앞테이블 조정 → 날입 조정 → 규준대 위치·각도 조정이다."
   },
   {
     id: 3022,
