@@ -727,6 +727,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-mock2').addEventListener('click', () => {
     startMockPractice(window.MOCK_QUESTIONS_2 || [], '실전문제 2');
   });
+  document.getElementById('btn-mock3').addEventListener('click', () => {
+    startMockPractice(window.MOCK_QUESTIONS_3 || [], '실전문제 3');
+  });
 
   // 과목 선택
   document.querySelectorAll('.subject-btn').forEach(btn => {
