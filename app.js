@@ -203,7 +203,11 @@ function renderExamQuestion(index) {
 }
 
 function selectExamAnswer(qId, option) {
-  examState.answers[qId] = option;
+  if (examState.answers[qId] === option) {
+    delete examState.answers[qId]; // 같은 보기 다시 누르면 선택 취소
+  } else {
+    examState.answers[qId] = option; // 다른 보기 누르면 변경
+  }
   const index = examState.questions.findIndex(q => q.id === qId);
   renderExamQuestion(index);
 }
@@ -334,8 +338,11 @@ function renderPracticeQuestion(index) {
     if (answered === i + 1) btn.classList.add('selected');
 
     btn.addEventListener('click', () => {
-      if (practiceState.answered[q.id] !== undefined) return;
-      practiceState.answered[q.id] = i + 1;
+      if (practiceState.answered[q.id] === i + 1) {
+        delete practiceState.answered[q.id]; // 같은 보기 다시 누르면 선택 취소
+      } else {
+        practiceState.answered[q.id] = i + 1; // 다른 보기 누르면 변경
+      }
       renderPracticeQuestion(index);
       updatePracticeSubmitBtn();
     });
