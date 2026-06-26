@@ -26,6 +26,7 @@ let wrongPracticeState = {
 };
 
 let mockPracticeState = {
+  title: '실전문제',
   questions: [],
   currentIndex: 0,
   answered: {},
@@ -554,13 +555,14 @@ function moveWrongPracticeQuestion(dir) {
 }
 
 // ===== 실전문제 =====
-function startMockPractice() {
-  mockPracticeState.questions = [...(window.MOCK_QUESTIONS || [])];
+function startMockPractice(questions = window.MOCK_QUESTIONS || [], title = '실전문제') {
+  mockPracticeState.title = title;
+  mockPracticeState.questions = [...questions];
   mockPracticeState.currentIndex = 0;
   mockPracticeState.answered = {};
 
   if (mockPracticeState.questions.length === 0) {
-    alert('등록된 실전문제가 없습니다.');
+    alert('등록된 ' + title + '가 없습니다.');
     return;
   }
 
@@ -572,6 +574,7 @@ function renderMockPracticeQuestion(index) {
   const q = mockPracticeState.questions[index];
   mockPracticeState.currentIndex = index;
 
+  document.getElementById('mock-practice-title').textContent = mockPracticeState.title;
   document.getElementById('mock-practice-subject').textContent = q.subject;
   document.getElementById('mock-practice-question').textContent = q.question;
   document.getElementById('mock-practice-progress').textContent =
@@ -587,8 +590,10 @@ function renderMockPracticeQuestion(index) {
 
   const fb = document.getElementById('mock-practice-feedback');
   const exp = document.getElementById('mock-practice-explanation');
+  const result = document.getElementById('mock-practice-result');
   fb.classList.add('hidden');
   exp.classList.add('hidden');
+  result.classList.add('hidden');
 
   const opts = document.getElementById('mock-practice-options');
   opts.innerHTML = '';
@@ -617,6 +622,7 @@ function renderMockPracticeQuestion(index) {
       });
 
       renderMockFeedback(q, i + 1, isCorrect);
+      renderMockPracticeResult();
     });
 
     opts.appendChild(btn);
@@ -624,6 +630,7 @@ function renderMockPracticeQuestion(index) {
 
   if (answered !== undefined) {
     renderMockFeedback(q, answered, answered === q.answer);
+    renderMockPracticeResult();
   }
 
   document.getElementById('mock-practice-prev-btn').disabled = index === 0;
@@ -653,6 +660,31 @@ function renderMockFeedback(q, selected, isCorrect) {
       : '내 답: ' + selectedText + ' / 정답: ' + answerText + ' / 이유: ' + explanation;
   }
   exp.classList.remove('hidden');
+}
+
+function getMockPracticeScore() {
+  const answeredIds = Object.keys(mockPracticeState.answered);
+  const correctCount = mockPracticeState.questions.filter(q => mockPracticeState.answered[q.id] === q.answer).length;
+
+  return {
+    answeredCount: answeredIds.length,
+    correctCount,
+    totalCount: mockPracticeState.questions.length,
+  };
+}
+
+function renderMockPracticeResult() {
+  const result = document.getElementById('mock-practice-result');
+  const score = getMockPracticeScore();
+
+  if (score.answeredCount < score.totalCount) {
+    result.classList.add('hidden');
+    return;
+  }
+
+  const percent = Math.round((score.correctCount / score.totalCount) * 100);
+  result.textContent = '최종 결과: ' + score.correctCount + ' / ' + score.totalCount + '문제 정답 · 정답률 ' + percent + '%';
+  result.classList.remove('hidden');
 }
 
 function moveMockPracticeQuestion(dir) {
@@ -689,7 +721,12 @@ document.addEventListener('DOMContentLoaded', () => {
     renderWrongNotes();
     showScreen('screen-wrong-notes');
   });
-  document.getElementById('btn-mock').addEventListener('click', startMockPractice);
+  document.getElementById('btn-mock').addEventListener('click', () => {
+    startMockPractice(window.MOCK_QUESTIONS || [], '실전문제 1');
+  });
+  document.getElementById('btn-mock2').addEventListener('click', () => {
+    startMockPractice(window.MOCK_QUESTIONS_2 || [], '실전문제 2');
+  });
 
   // 과목 선택
   document.querySelectorAll('.subject-btn').forEach(btn => {

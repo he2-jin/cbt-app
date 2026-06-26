@@ -43,7 +43,12 @@
         </button>
         <button id="btn-mock" class="menu-btn">
           <span class="menu-icon">🎯</span>
-          <span class="menu-title">실전문제</span>
+          <span class="menu-title">실전문제 1</span>
+          <span class="menu-sub">풀면 바로 확인</span>
+        </button>
+        <button id="btn-mock2" class="menu-btn">
+          <span class="menu-icon">🎯</span>
+          <span class="menu-title">실전문제 2</span>
           <span class="menu-sub">풀면 바로 확인</span>
         </button>
       </div>
@@ -199,7 +204,7 @@
   <div id="screen-mock-practice" class="screen">
     <div class="exam-header">
       <button class="back-btn" id="mock-practice-back">← 홈</button>
-      <span class="subject-badge">실전문제</span>
+      <span id="mock-practice-title" class="subject-badge">실전문제</span>
       <span id="mock-practice-progress" class="progress-text">1 / 0</span>
     </div>
     <div class="question-area">
@@ -211,6 +216,7 @@
       <div id="mock-practice-options" class="options"></div>
       <div id="mock-practice-feedback" class="feedback hidden"></div>
       <div id="mock-practice-explanation" class="explanation hidden"></div>
+      <div id="mock-practice-result" class="result-summary hidden"></div>
     </div>
     <div class="exam-footer">
       <button id="mock-practice-prev-btn" class="nav-btn">◀ 이전</button>
@@ -219,6 +225,7 @@
   </div>
 
   <script src="questions/mock1.js?v=20260627"></script>
+  <script src="questions/mock2.js?v=20260627"></script>
   <script src="questions/p1.js?v=20260626"></script>
   <script src="questions/p2.js?v=20260626"></script>
   <script src="questions/p3.js?v=20260626"></script>
